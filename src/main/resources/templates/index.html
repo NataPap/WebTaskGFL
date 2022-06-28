@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorator="include/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Start page</title>
@@ -8,30 +7,32 @@
 </head>
 <body>
 <h1>Hello</h1>
-<form action="add" style="border:1px solid #ccc">
+<form style="border:1px solid #ccc" action="#" th:action="@{/add}" th:object="${user}" method="post">
     <div class="container">
         <h1>Sign Up</h1>
         <p>Please fill in this form to create an account.</p>
         <hr>
-        <label><b>Name</b></label>
-        <input type="text" placeholder="Enter your name" name="name" required>
-        <label><b>Email</b></label>
-        <input type="text" placeholder="Enter email" name="email" required>
-        <label><b>Address:</b></label>
-        <label><b>City</b></label>
-        <input type="" placeholder="Enter city" name="address.city" required>
+        <label for="name"><b>Name</b></label>
+        <input id="name" type="text" placeholder="Enter your name" th:field="*{user.name}"  required>
+        <label for="email"><b>Email</b></label>
+        <input id="email" type="text" placeholder="Enter email" th:field="*{user.email}" required>
+        <label> <b>Address:</b></label>
+        <label for="address.city"><b>City</b></label>
+        <input id="address.city" type="text" placeholder="Enter city" th:field="*{user.address.city}" required>
 
-        <label><b>Street</b></label>
-        <input type="" placeholder="Enter street" name="address.street" required>
+        <label for="address.street"><b>Street</b></label>
+        <input id="address.street" type="text" placeholder="Enter street" th:field="*{user.address.street}" required>
 
-        <label><b>Suite</b></label>
-        <input type="" placeholder="Enter suite" name="address.suite" required>
+        <label for="address.suite"><b>Suite</b></label>
+        <input id="address.suite" type="text" placeholder="Enter suite" th:field="*{user.address.suite}" required>
 
-        <label><b>Zipcode</b></label>
-        <input type="" placeholder="Enter zipcode" name="address.zipcode" required>
+        <label for="address.zipcode"><b>Zipcode</b></label>
+        <input id="address.zipcode" type="text" placeholder="Enter zipcode" th:field="*{user.address.zipcode}" required>
 
-        <label><b>Phone</b></label>
-        <input type="text" placeholder="Enter phone" name="phone" required>
+        <label for="phone"><b>Phone</b></label>
+        <input id="phone" type="text" placeholder="Enter phone" th:field="*{user.phone}" required>
+
+        <input type="submit" value="Save user">
 
     </div>
 </form>

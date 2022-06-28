@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" />
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
@@ -13,24 +13,26 @@
         <th>#</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Address</th>
+        <th>City</th>
+        <th>Street</th>
+        <th>Suite</th>
+        <th>Zipcode</th>
         <th>Phone</th>
         <th>delete</th>
         <th>edit</th>
     </tr>
-    </thead>
-    <tbody>
-    <tr th:each="user : ${users}">
-        <td th:text="${user.id}"></td>
-
-        <td th:text="${user.name}"></td>
-        <td th:text="${user.email}"></td>
-        <td th:text="${user.address}"></td>
-        <td th:text="${user.phone}"></td>
-        <td><a th:href="@{/delete/{id}(id=${user.id})}">delete</a></td>
-        <td><a th:href="@{/edit/{id}(id=${user.id})}">edit</a></td>
-    </tr>
-    </tbody>
+    <th:block th:each="user:${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.address.city}"></td>
+            <td th:text="${user.address.street}"></td>
+            <td th:text="${user.address.suite}"></td>
+            <td th:text="${user.address.zipcode}"></td>
+            <td th:text="${user.phone}"></td>
+            <td><a th:href="@{/delete/{id}(id=${user.id})}">delete</a></td>
+            <td><a th:href="@{/edit/{id}(id=${user.id})}">edit</a></td>
+    </th:block>
 </table>
 </body>
 </html>

@@ -61,20 +61,21 @@ button:hover {
 }
 
 table {
-    background-color: blue;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
 }
 
-td {
-    background-color: azure;
-
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
 }
 
-th {
-    background-color: beige;
-    border-left: 15px;
-    border-right: 15px;
-    border-bottom: 15px;
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
+
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
     .cancelbtn, .signupbtn {
