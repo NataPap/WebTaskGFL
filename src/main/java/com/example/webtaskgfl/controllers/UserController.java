@@ -28,20 +28,8 @@ public class UserController {
     public String addUser (@ModelAttribute User user, Model model) {
         try {
             model.addAttribute("user", user);
-            User userNew = new User();
-            userNew.setId(user.getId());
-            userNew.setName(user.getName());
-            userNew.setEmail(user.getEmail());
-            Address addressNew = new Address();
-            addressNew.setCity(user.getAddress().getCity());
-            addressNew.setStreet(user.getAddress().getStreet());
-            addressNew.setSuite(user.getAddress().getSuite());
-            addressNew.setZipcode(user.getAddress().getZipcode());
-            addressNew.setId(user.getId());
-            addressRepository.save(addressNew);
-            userNew.setAddress(addressNew);
-            userNew.setPhone(user.getPhone());
-            userRepository.save(userNew);
+            addressRepository.save(user.getAddress());
+            userRepository.save(user);
         } catch (Exception ignored) {}
             return "redirect:/list";
     }
@@ -50,7 +38,7 @@ public class UserController {
     public String deleteUser(@PathVariable("id") int id) {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("invalid user id"));
         userRepository.delete(user);
-
+        addressRepository.delete(user.getAddress());
         return "redirect:/list";
     }
 
@@ -64,6 +52,7 @@ public class UserController {
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable("id") int id, User user) {
         try {
+            addressRepository.save(user.getAddress());
             userRepository.save(user);
         } catch (Exception ignored){}
 

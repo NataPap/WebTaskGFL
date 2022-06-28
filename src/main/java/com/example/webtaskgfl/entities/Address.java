@@ -12,6 +12,7 @@ import javax.persistence.*;
 
 public class Address {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
     @Column(name = "street", length = 200, nullable = false)
@@ -61,5 +62,16 @@ public class Address {
 
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", street='" + street + '\'' +
+                ", suite='" + suite + '\'' +
+                ", city='" + city + '\'' +
+                ", zipcode='" + zipcode + '\'' +
+                '}';
     }
 }

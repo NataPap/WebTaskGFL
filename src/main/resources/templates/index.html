@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Start page</title>
@@ -13,7 +13,7 @@
         <p>Please fill in this form to create an account.</p>
         <hr>
         <label for="name"><b>Name</b></label>
-        <input id="name" type="text" placeholder="Enter your name" th:field="*{user.name}"  required>
+        <input id="name" type="text" placeholder="Enter your name" th:  required>
         <label for="email"><b>Email</b></label>
         <input id="email" type="text" placeholder="Enter email" th:field="*{user.email}" required>
         <label> <b>Address:</b></label>
