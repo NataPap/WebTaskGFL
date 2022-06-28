@@ -31,7 +31,7 @@ public class UserController {
             addressRepository.save(user.getAddress());
             userRepository.save(user);
         } catch (Exception ignored) {}
-            return "redirect:/list";
+            return "redirect:/resultList";
     }
 
     @GetMapping("/delete/{id}")
@@ -39,7 +39,7 @@ public class UserController {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("invalid user id"));
         userRepository.delete(user);
         addressRepository.delete(user.getAddress());
-        return "redirect:/list";
+        return "redirect:/resultList";
     }
 
     @GetMapping("/edit/{id}")
@@ -56,6 +56,6 @@ public class UserController {
             userRepository.save(user);
         } catch (Exception ignored){}
 
-        return "redirect:/list";
+        return "redirect:/resultList";
     }
 }
